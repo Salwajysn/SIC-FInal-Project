@@ -117,20 +117,26 @@ elif selected == "Profile":
     st.header("Pengembang 1")
     st.write("""
     Nama: Pengembang 1
+    
     Peran: Data Scientist
+    
     Deskripsi: Bertanggung jawab dalam analisis data dan pembuatan model prediksi kualitas udara.
     """)
 
     st.header("Pengembang 2")
     st.write("""
     Nama: Pengembang 2
+    
     Peran: Frontend Developer
+    
     Deskripsi: Bertanggung jawab dalam desain antarmuka pengguna dan pengembangan fitur interaktif.
     """)
 
     st.header("Pengembang 3")
     st.write("""
     Nama: Pengembang 3
+    
     Peran: Backend Developer
+    
     Deskripsi: Bertanggung jawab dalam pengelolaan database dan integrasi data ke dalam aplikasi.
     """)
