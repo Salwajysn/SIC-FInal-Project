@@ -43,7 +43,7 @@ with st.sidebar:
 
 # Home page
 if selected == "Home":
-    st.title("Dashboard Kualitas Udara Dunia")
+    st.title("Air Quality Monitoring Sensing for Healthier People")
     st.header("Informasi Kualitas Udara")
     st.write("""
     Kualitas udara adalah ukuran seberapa bersih atau tercemarnya udara di suatu lokasi. 
