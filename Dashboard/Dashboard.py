@@ -63,7 +63,7 @@ if selected == "Home":
 
 # Air Quality Monitor page
 elif selected == "Air Quality Monitor":
-    st.title("Air Quality Monitor")
+    st.title("World Air Quality Monitor")
     
     # Sort the countries in alphabetical order
     sorted_countries = df['Country Label'].sort_values().unique()
