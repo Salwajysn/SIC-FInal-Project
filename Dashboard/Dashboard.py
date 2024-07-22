@@ -4,7 +4,7 @@ import numpy as np
 from streamlit_option_menu import option_menu
 
 # Load the air quality data
-df = pd.read_csv('dashboard/world_air_quality.csv', sep=";")
+df = pd.read_csv('Dashboard/world_air_quality.csv', sep=";")
 
 # Define a function to classify air quality
 def classify_air_quality(value, unit):
