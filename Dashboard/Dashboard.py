@@ -95,7 +95,7 @@ elif selected == "Air Quality Monitor":
 # Test Sensor page
 elif selected == "Test Sensor":
     st.title("Test Sensor")
-    st.header("Masukkan Nilai Sensor Anda")
+    st.header("Masukkan Nilai Sensor")
 
     # Input fields for sensor values
     humidity = st.number_input('Kelembaban (%)', min_value=0.0, max_value=100.0, step=0.1)
