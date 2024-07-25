@@ -242,8 +242,8 @@ elif selected == "Air Quality Check":
 
 # Profile page
 elif selected == "Profile":
-    st.title("👩🏻‍💻Profile Pengembang Aplikasi👨🏻‍💻")
-    st.header("Pengembang 1")
+    st.title("Profile Pengembang Aplikasi")
+    st.header("Pengembang 1 👩🏻‍💻")
     st.write("""
     Nama: Adinda Rizki Sya'bana Diva
     
@@ -252,7 +252,7 @@ elif selected == "Profile":
     Deskripsi: Bertanggung jawab dalam analisis data dan pembuatan model prediksi kualitas udara.
     """)
 
-    st.header("Pengembang 2")
+    st.header("Pengembang 2 👩🏻‍💻")
     st.write("""
     Nama: Salwa Nafisa
              
@@ -261,7 +261,7 @@ elif selected == "Profile":
     Deskripsi: Bertanggung jawab dalam desain antarmuka pengguna dan pengembangan fitur interaktif.
     """)
 
-    st.header("Pengembang 3")
+    st.header("Pengembang 3 👨🏻‍💻")
     st.write("""
     Nama: Rahman Ilyas Alkahfi
              
