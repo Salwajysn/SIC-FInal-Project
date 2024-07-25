@@ -242,7 +242,7 @@ elif selected == "Air Quality Check":
 
 # Profile page
 elif selected == "Profile":
-    st.title("👩🏻‍💻 Profile Pengembang Aplikasi 👨🏻‍💻")
+    st.title("👩🏻‍💻Profile Pengembang Aplikasi👨🏻‍💻")
     st.header("Pengembang 1")
     st.write("""
     Nama: Adinda Rizki Sya'bana Diva
