@@ -6,7 +6,7 @@ from streamlit_option_menu import option_menu
 # Load the air quality data
 df = pd.read_csv('Dashboard/world_air_quality.csv', sep=";")
 
-# Fungsi untuk mengklasifikasikan kualitas udara
+# Define a function to classify air quality
 def classify_air_quality(value, unit):
     if unit == 'ppm':
         if value < 0.001:
@@ -28,6 +28,9 @@ def classify_air_quality(value, unit):
             return 'Beracun'
     return 'Tidak Diketahui'
 
+# Classify air quality for each record
+df['Klasifikasi Kualitas Udara'] = df.apply(lambda row: classify_air_quality(row['Value'], row['Unit']), axis=1)
+
 # Sidebar menu
 with st.sidebar:
     selected = option_menu(
@@ -38,7 +41,7 @@ with st.sidebar:
         default_index=0,
     )
 
-# Halaman Home
+# Home page
 if selected == "Home":
     st.title("Dashboard Kualitas Udara Dunia")
     st.header("Informasi Kualitas Udara")
@@ -58,57 +61,57 @@ if selected == "Home":
     - **µg/m³ (micrograms per cubic meter):** Digunakan untuk mengukur konsentrasi partikel polutan.
     """)
 
-# Halaman Air Quality Monitor
+# Air Quality Monitor page
 elif selected == "Air Quality Monitor":
     st.title("World Air Quality Monitor")
     
-    # Urutkan negara-negara secara alfabetis
+    # Sort the countries in alphabetical order
     sorted_countries = df['Country Label'].sort_values().unique()
 
-    # Pilih negara
+    # Select a country
     country = st.selectbox('Pilih Negara', sorted_countries)
 
-    # Filter data berdasarkan negara yang dipilih
+    # Filter data based on the selected country
     country_data = df[df['Country Label'] == country]
 
-    # Tampilkan data
+    # Display the data
     st.dataframe(country_data[['City', 'Location', 'Pollutant', 'Value', 'Unit', 'Klasifikasi Kualitas Udara']])
 
-    # Tampilkan informasi ringkasan
+    # Display summary information
     air_quality_summary = country_data['Klasifikasi Kualitas Udara'].value_counts()
     st.write('Ringkasan Kualitas Udara:')
     st.bar_chart(air_quality_summary)
 
-    # Pilih kota untuk detail lebih lanjut
+    # Select a city for more details
     city = st.selectbox('Pilih Kota', country_data['City'].unique())
 
-    # Filter data berdasarkan kota yang dipilih
+    # Filter data based on the selected city
     city_data = country_data[country_data['City'] == city]
 
-    # Tampilkan informasi detail untuk kota yang dipilih
+    # Display detailed information for the selected city
     st.write(f'Detail Kualitas Udara di {city}:')
     st.dataframe(city_data[['Pollutant', 'Value', 'Unit', 'Klasifikasi Kualitas Udara']])
 
-# Halaman Test Sensor
+# Test Sensor page
 elif selected == "Test Sensor":
     st.title("Test Sensor")
     st.header("Masukkan Nilai Sensor")
 
-    # Input nilai sensor
+    # Input fields for sensor values
     humidity = st.number_input('Kelembaban (%)', min_value=0.0, max_value=100.0, step=0.1)
     mq135_value = st.number_input('Nilai Sensor MQ135 (ppm)', min_value=0.0, step=0.001)
     temperature = st.number_input('Suhu (°C)', min_value=-50.0, max_value=50.0, step=0.1)
 
-    # Tampilkan nilai sensor
+    # Display the sensor values
     st.write(f"Kelembaban: {humidity}%")
     st.write(f"Nilai Sensor MQ135: {mq135_value} ppm")
     st.write(f"Suhu: {temperature} °C")
 
-    # Klasifikasikan kualitas udara berdasarkan nilai sensor MQ135
+    # Classify air quality based on MQ135 sensor value
     air_quality_classification = classify_air_quality(mq135_value, 'ppm')
     st.write(f"Klasifikasi Kualitas Udara Berdasarkan Nilai Sensor MQ135: {air_quality_classification}")
 
-# Halaman Profile
+# Profile page
 elif selected == "Profile":
     st.title("Profile Pengembang Aplikasi")
     st.header("Pengembang 1")
@@ -137,3 +140,4 @@ elif selected == "Profile":
              
     Deskripsi: Bertanggung jawab dalam pengelolaan database dan integrasi data ke dalam aplikasi.
     """)
+
